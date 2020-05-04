@@ -9,6 +9,14 @@ type person struct {
 	address []string
 }
 
+func assign_values(curPerson person ,first,last string , curAge int8, curAdd string) person {
+	curPerson.firstname = first
+	curPerson.lastname = last
+	curPerson.age = curAge
+	curPerson.address = []string{curAdd}
+	return curPerson
+}
+
 func main(){
 	var person1 person
 	var person2 person
@@ -27,4 +35,8 @@ func main(){
 
 	person3 := person{firstname:"Max",lastname:"John",age:40,address : []string{"New York"}}
 	fmt.Println(person3)
+	var person4 person
+	person4 = assign_values(person4,"john","lark",46,"seattle")
+	fmt.Println(person4)
+	
 }
