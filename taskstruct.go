@@ -5,7 +5,7 @@ import "fmt"
 type person struct {
 	firstname string
 	lastname string
-	age int
+	age int8
 	address []string
 }
 
