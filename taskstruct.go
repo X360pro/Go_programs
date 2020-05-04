@@ -24,4 +24,7 @@ func main(){
 	person2.address = make([]string,1)
 	person2.address[0] = "andheri"
 	fmt.Println(person2)
+
+	person3 := person{firstname:"Max",lastname:"John",age:40,address : []string{"New York"}}
+	fmt.Println(person3)
 }
