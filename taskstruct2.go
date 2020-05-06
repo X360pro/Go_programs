@@ -27,10 +27,14 @@ func printlnfo(curPerson *person) {
 	}
 }
 
+func (curPerson *person) getFullName() string {
+	b := " Full name is : " + curPerson.firstname + " " + curPerson.lastname
+	return b
+}
+
 func main() {
 	var person1 person
 	addresses := []string{"usa", "india", "uk", "canada"}
 	person1 = assign_values(person1, "john", "lark", 46, addresses)
-	printlnfo(&person1)
+	fmt.Println(person1.getFullName())
 }
-
