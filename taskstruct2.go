@@ -17,7 +17,7 @@ func assign_values(curPerson person, first, last string, curAge int8, curAdd []s
 	return curPerson
 }
 
-func printlnfo(curPerson person) {
+func printlnfo(curPerson *person) {
 	fmt.Println("First Name : ", curPerson.firstname)
 	fmt.Println("Last Name : ", curPerson.lastname)
 	fmt.Println("Age : ", curPerson.age)
@@ -31,5 +31,6 @@ func main() {
 	var person1 person
 	addresses := []string{"usa", "india", "uk", "canada"}
 	person1 = assign_values(person1, "john", "lark", 46, addresses)
-	printlnfo(person1)
+	printlnfo(&person1)
 }
+
