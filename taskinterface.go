@@ -19,9 +19,14 @@ func (s *square) area() float64 {
 	return (s.side * s.side)
 }
 
+func printDetals(s shape) {
+	fmt.Println("Perimeter of square is ", s.perimeter())
+	fmt.Println("Area is ", s.area())
+
+}
+
 func main() {
 	var newSquare shape
 	newSquare = &square{5.0}
-	fmt.Println("Perimeter of square is ", newSquare.perimeter())
-	fmt.Println("Area is ", newSquare.area())
+	printDetals(newSquare)
 }
