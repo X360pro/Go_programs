@@ -43,9 +43,9 @@ func main() {
 				fmt.Println("Try Again with integer input")
 				continue
 			}
-			newerr := guess.CheckingType()
-			if newerr != nil {
-				fmt.Println(newerr)
+			err = guess.CheckingType()
+			if err != nil {
+				fmt.Println(err)
 				continue
 			}
 			break
