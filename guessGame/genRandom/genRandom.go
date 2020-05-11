@@ -1,0 +1,11 @@
+package genRandon
+
+import (
+	"math/rand"
+	"time"
+)
+
+func RandomNumGenerator(min, max int) int {
+	rand.Seed(time.Now().UnixNano())
+	return rand.Intn(max-min) + min
+}
