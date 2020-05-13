@@ -41,13 +41,16 @@ func main() {
 			continue
 		}
 
-		if hint, flag = checkGuess.CheckGuess(numToBeGuessed, guess); flag == true {
+		if hint, flag = checkGuess.CheckGuess(numToBeGuessed, guess); flag {
 			fmt.Println(hint)
 			break
 		} else {
 			fmt.Println(hint)
 		}
 	}
+	if !flag {
+		fmt.Println("                  YOU HAVE EXHAUSTED ALL OF YOUR ATTEMPTS")
+		fmt.Println("                  Original no. was", numToBeGuessed)
+	}
 
-	fmt.Println("                  Original no. was", numToBeGuessed)
 }
