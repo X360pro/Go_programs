@@ -12,6 +12,7 @@ type Num int
 
 type CheckType interface {
 	CheckingType() error
+	ReadInput() error
 }
 
 func (n *Num) ReadInput() error {
