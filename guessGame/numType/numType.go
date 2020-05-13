@@ -10,11 +10,6 @@ import (
 
 type Num int
 
-type CheckType interface {
-	CheckingType() error
-	ReadInput() error
-}
-
 func (n *Num) ReadInput() error {
 	reader := bufio.NewReader(os.Stdin)
 	guess, _ := reader.ReadString('\n')
