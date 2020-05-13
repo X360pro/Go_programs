@@ -37,7 +37,7 @@ func main() {
 
 		if err != nil {
 			fmt.Println(err)
-			fmt.Println("Attempt is lost")
+			i -= 1
 			continue
 		}
 
