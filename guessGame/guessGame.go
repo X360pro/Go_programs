@@ -21,7 +21,6 @@ func rules() {
 func main() {
 
 	numToBeGuessed := numType.Num(genRandom.RandomNumGenerator(1, 50))
-	fmt.Println(numToBeGuessed)
 
 	rules()
 	fmt.Println("Enter your guess")
