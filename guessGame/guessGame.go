@@ -19,37 +19,29 @@ func rules() {
 }
 
 func main() {
-	numToBeGuessed := numType.Num(genRandom.RandomNumGenerator(1, 50))
-	err := numToBeGuessed.CheckingType()
 
-	if err != nil {
-		fmt.Println(err)
-	}
+	numToBeGuessed := numType.Num(genRandom.RandomNumGenerator(1, 50))
+	fmt.Println(numToBeGuessed)
 
 	rules()
 	fmt.Println("Enter your guess")
 
-	var guess numType.Num
 	var hint string
 	var flag bool
+	var guess numType.Num
+
 	for i := 1; i <= 5; i++ {
 		fmt.Println(" ")
 		fmt.Println("Attempt no. ", i)
 
-		for {
-			err := numType.Scan(&guess)
-			if err != nil {
-				fmt.Println(err)
-				fmt.Println("Try Again with integer input")
-				continue
-			}
-			err = guess.CheckingType()
-			if err != nil {
-				fmt.Println(err)
-				continue
-			}
-			break
+		err := guess.ReadInput()
+
+		if err != nil {
+			fmt.Println(err)
+			fmt.Println("Attempt is lost")
+			continue
 		}
+
 		if hint, flag = checkGuess.CheckGuess(numToBeGuessed, guess); flag == true {
 			fmt.Println(hint)
 			break
