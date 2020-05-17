@@ -1,0 +1,33 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+	"net/http"
+	"time"
+)
+
+func responSize(url string) {
+
+	fmt.Println("Getting : ", url)
+	response, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer response.Body.Close()
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(len(body))
+}
+
+func main() {
+
+	go responSize("http://example.com")
+	go responSize("http://golang.org/")
+	go responSize("http://golang.org/doc")
+	time.Sleep(5 * time.Second)
+	fmt.Scan()
+}
