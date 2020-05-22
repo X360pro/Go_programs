@@ -26,7 +26,16 @@ func NewGame() Game {
 	input, _ = reader.ReadString('\n')
 	input = strings.TrimSpace(input)
 	player2 := player.Player{input, "O", false, 0}
-	new := Game{board.NewBoard(), player1, player2}
+	fmt.Print("Enter Size of the board : ")
+Repeat:
+	input, _ = reader.ReadString('\n')
+	input = strings.TrimSpace(input)
+	size, err := strconv.Atoi(input)
+	if err != nil {
+		fmt.Println(err, " Try Again")
+		goto Repeat
+	}
+	new := Game{board.NewBoard(size), player1, player2}
 	return new
 }
 
@@ -39,7 +48,7 @@ PlayAgain:
 	fmt.Printf("%v  is O \n", g.player2.Name)
 	g.player1.Turn = true
 	g.Board.Display()
-	for chances := 0; chances < 9; chances++ {
+	for chances := 0; chances < g.CurBoardSize*g.CurBoardSize; chances++ {
 		if g.player1.Turn {
 			fmt.Printf("%v enter your position : ", g.player1.Name)
 			g.move(g.player1.Symbol)
@@ -81,7 +90,16 @@ PlayAgain:
 		g.player1.Symbol = "X"
 		g.player2.Symbol = "O"
 		count++
-		g.CleanBoard()
+		fmt.Println("Enter size of board : ")
+	Repeat:
+		input, _ = reader.ReadString('\n')
+		input = strings.TrimSpace(input)
+		size, err := strconv.Atoi(input)
+		if err != nil {
+			fmt.Println(err, " Try Again")
+			goto Repeat
+		}
+		g.CleanBoard(size)
 		goto PlayAgain
 	}
 	fmt.Printf("Final Score after %d rounds\n", count)
@@ -107,10 +125,10 @@ Repeat:
 		fmt.Println(err, " Try Again")
 		goto Repeat
 	}
-	if move < 0 || move > 9 || g.CurBoard[move/3][move%3] != "" {
+	if move < 0 || move > g.CurBoardSize*g.CurBoardSize || g.CurBoard[move/g.CurBoardSize][move%g.CurBoardSize] != "" {
 		fmt.Println("Positon is either occupied or out of bounds ")
 		fmt.Println(" Try Again")
 		goto Repeat
 	}
-	g.CurBoard[move/3][move%3] = curSym
+	g.CurBoard[move/g.CurBoardSize][move%g.CurBoardSize] = curSym
 }
