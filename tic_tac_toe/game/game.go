@@ -125,8 +125,12 @@ Repeat:
 		fmt.Println(err, " Try Again")
 		goto Repeat
 	}
-	if move < 0 || move > g.CurBoardSize*g.CurBoardSize || g.CurBoard[move/g.CurBoardSize][move%g.CurBoardSize] != "" {
-		fmt.Println("Positon is either occupied or out of bounds ")
+	if move < 0 || move >= g.CurBoardSize*g.CurBoardSize {
+		fmt.Println("position is out of bounds ")
+		fmt.Println(" Try Again")
+		goto Repeat
+	} else if g.CurBoard[move/g.CurBoardSize][move%g.CurBoardSize] != "" {
+		fmt.Println("Positon is occupied ")
 		fmt.Println(" Try Again")
 		goto Repeat
 	}
